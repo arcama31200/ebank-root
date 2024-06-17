@@ -1,0 +1,22 @@
+services:
+  backend:
+    build: ./back/ebanking-backend-bba
+    volumes:
+      - ./back/ebanking-backend-bba:/app
+      - ~/.m2:/root/.m2
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+    command: ["./mvnw", "spring-boot:run"]
+
+  frontend:
+    build: ./ebank-front
+    volumes:
+      - ./ebannk-front:/app
+      - /app/node_modules
+    ports:
+      - "4200:4200"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    command: ["npm", "start"]
