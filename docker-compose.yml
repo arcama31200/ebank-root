@@ -1,3 +1,5 @@
+version: '3.7'
+
 services:
   backend:
     build: ./back/ebanking-backend-bba
@@ -13,7 +15,7 @@ services:
   frontend:
     build: ./ebank-front
     volumes:
-      - ./ebannk-front:/app
+      - ./ebank-front:/app
       - /app/node_modules
     ports:
       - "4200:4200"
